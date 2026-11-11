@@ -51,19 +51,27 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ProblemDetail handleIllegalArgumentException(
-            IllegalArgumentException ex) {
+    @ExceptionHandler(InvalidAmountException.class)
+    public ProblemDetail handleInvalidAmountException(InvalidAmountException ex) {
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.BAD_REQUEST,
                 ex.getMessage()
         );
 
-        problemDetail.setTitle("Invalid Argument");
+        problemDetail.setTitle("Invalid Amount");
+        problemDetail.setType(URI.create("https://atm.api/errors/invalid-amount"));
         problemDetail.setProperty("timestamp", Instant.now());
 
         return problemDetail;
     }
 
+    @ExceptionHandler(Exception.class)
+    public ProblemDetail handleUnexpected(Exception ex) {
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(
+                HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
+        pd.setTitle("Internal Server Error");
+        pd.setProperty("timestamp", Instant.now());
+        return pd;
+    }
 }

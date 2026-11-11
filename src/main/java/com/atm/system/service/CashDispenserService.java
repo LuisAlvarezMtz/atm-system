@@ -3,6 +3,7 @@ package com.atm.system.service;
 import com.atm.system.dto.DenominationDetail;
 import com.atm.system.dto.WithdrawalPlan;
 import com.atm.system.exception.CashNotDispensableException;
+import com.atm.system.exception.InvalidAmountException;
 import com.atm.system.model.Denomination;
 import com.atm.system.repository.DenominationRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,7 @@ public class CashDispenserService {
     public List<DenominationDetail> withdraw(BigDecimal amount) {
 
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("Amount must be greater than zero");
-        }
+            throw new InvalidAmountException("Amount must be greater than zero");        }
 
         List<Denomination> denominations = denominationRepository
                 .findDenominationsForUpdate();
