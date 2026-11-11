@@ -2,6 +2,7 @@ package com.atm.system.service;
 
 import com.atm.system.dto.DenominationDetail;
 import com.atm.system.dto.WithdrawalPlan;
+import com.atm.system.exception.CashNotDispensableException;
 import com.atm.system.model.Denomination;
 import com.atm.system.repository.DenominationRepository;
 import lombok.RequiredArgsConstructor;
@@ -73,8 +74,9 @@ public class CashDispenserService {
 
 
         if (remainingAmount.compareTo(BigDecimal.ZERO) != 0) {
-            throw new IllegalArgumentException
-                    ("It's not possible to provide the requested amount using the available denominations");
+            throw new CashNotDispensableException(
+                    "It's not possible to provide the requested amount using the available denominations"
+            );
         }
 
         for (WithdrawalPlan plan : plans) {
