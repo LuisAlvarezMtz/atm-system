@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: atm-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/atm_db
+    username: atm_system
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
