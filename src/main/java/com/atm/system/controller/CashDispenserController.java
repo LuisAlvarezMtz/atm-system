@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/atm")
+@RequestMapping("/api/v1/atm")
 @RequiredArgsConstructor
 public class CashDispenserController {
 
@@ -30,7 +30,7 @@ public class CashDispenserController {
         );
     }
 
-    @GetMapping
+    @GetMapping("/denominations")
     public ResponseEntity<List<DenominationStock>> getDenominations() {
         return ResponseEntity.ok(managementService.getDenominations());
     }
