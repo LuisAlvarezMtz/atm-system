@@ -4,11 +4,10 @@ import com.atm.system.dto.DenominationDetail;
 import com.atm.system.dto.WithdrawRequest;
 import com.atm.system.service.CashDispenserService;
 import com.atm.system.service.DenominationManagementService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,16 +20,20 @@ public class CashDispenserController {
     private final DenominationManagementService managementService;
 
     @PostMapping("/withdraw")
-    public List<DenominationDetail> withdraw(
-            @RequestBody WithdrawRequest request) {
+    public ResponseEntity<List<DenominationDetail>> withdraw(
+            @Valid @RequestBody WithdrawRequest request) {
 
-        return cashDispenserService.withdraw(request.amount());
+        return ResponseEntity.ok(
+                cashDispenserService.withdraw(request.amount())
+        );
     }
 
     @PostMapping("/reset")
-    public String reset() {
+    public ResponseEntity<String> reset() {
+
         managementService.reset();
-        return "success";
+
+        return ResponseEntity.ok("atm reset successfully");
     }
 
 }
