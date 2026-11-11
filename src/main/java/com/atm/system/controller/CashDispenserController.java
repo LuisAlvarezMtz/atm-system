@@ -6,6 +6,7 @@ import com.atm.system.service.CashDispenserService;
 import com.atm.system.service.DenominationManagementService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,11 @@ public class CashDispenserController {
         );
     }
 
+
     @PostMapping("/reset")
-    public ResponseEntity<String> reset() {
-
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void reset() {
         managementService.reset();
-
-        return ResponseEntity.ok("atm reset successfully");
     }
 
 }
