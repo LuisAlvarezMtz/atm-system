@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero Automático</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<main class="container">
+
+    <!-- Mensajes de operación -->
+    <div id="message" class="message hidden"></div>
+
+    <div class="dashboard">
+
+        <!-- Panel izquierdo: Cajero -->
+        <section class="atm-panel">
+
+            <!-- Pantalla del cajero -->
+            <div class="atm-screen">
+                <div class="screen-content">
+
+                    <p class="screen-description">
+                        Ingresa el monto que deseas retirar
+                    </p>
+
+                    <!-- Formulario de retiro -->
+                    <form id="withdraw-form">
+
+                        <label for="amount">
+                            Monto del retiro
+                        </label>
+
+                        <div class="amount-input">
+                            <span class="currency-symbol">$</span>
+
+                            <input
+                                    type="number"
+                                    id="amount"
+                                    name="amount"
+                                    placeholder="0.00"
+                                    min="0.01"
+                                    step="0.01"
+                                    required
+                            >
+                        </div>
+
+                        <p class="currency-description">
+                            MXN - Pesos mexicanos
+                        </p>
+
+                        <button
+                                type="submit"
+                                id="withdraw-button"
+                                class="withdraw-button"
+                        >
+                            Retirar efectivo
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- Detalles del retiro -->
+            <section id="withdraw-result" class="withdraw-result-section"></section>
+
+        </section>
+
+        <!-- Panel derecho: Inventario -->
+        <aside class="inventory-panel">
+
+            <div class="panel-heading">
+
+                <div>
+                    <h2>Denominaciones</h2>
+
+                    <p class="panel-description">
+                        Efectivo disponible en el cajero
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Tabla de inventario -->
+            <div class="inventory-table-container">
+
+                <table class="inventory-table">
+
+                    <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Cantidad</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="inventory">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Botón para resetear -->
+            <button
+                    type="button"
+                    id="reset-button"
+                    class="reset-button"
+            >
+                Resetear inventario
+            </button>
+
+        </aside>
+
+    </div>
+
+</main>
+
+<script type="module" src="/js/app.js"></script>
+
+</body>
+</html>

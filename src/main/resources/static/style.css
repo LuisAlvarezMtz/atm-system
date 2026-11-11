@@ -1,0 +1,442 @@
+/* =========================
+   RESET GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #edf2f8;
+    color: #0f172a;
+    min-height: 100vh;
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* =========================
+   MENSAJES
+========================= */
+
+.message {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.message.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.message.hidden,
+.hidden {
+    display: none;
+}
+
+/* Texto de estado vacío */
+
+.empty {
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+}
+
+td.empty {
+    padding: 20px 8px;
+}
+
+/* =========================
+   PANEL DEL CAJERO
+========================= */
+
+.atm-panel {
+    background: #1e293b;
+    border-radius: 18px;
+    padding: 24px;
+    min-height: 720px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+}
+
+/* Pantalla superior */
+
+.atm-screen {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.screen-content {
+    width: 100%;
+}
+
+/* Texto introductorio */
+
+.screen-description {
+    color: #93c5fd;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   FORMULARIO DE RETIRO
+========================= */
+
+#withdraw-form label {
+    display: block;
+    color: #f8fafc;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.amount-input {
+    display: flex;
+    align-items: center;
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 9px;
+    padding: 0 12px;
+    height: 56px;
+    transition: border-color 0.2s;
+}
+
+.amount-input:focus-within {
+    border-color: #3b82f6;
+}
+
+.currency-symbol {
+    color: #60a5fa;
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+.amount-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #f8fafc;
+    font-size: 22px;
+}
+
+.amount-input input::placeholder {
+    color: #64748b;
+}
+
+/* Ocultar flechas del input number */
+
+.amount-input input::-webkit-outer-spin-button,
+.amount-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.amount-input input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* Texto de moneda */
+
+.currency-description {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+/* Botón retirar */
+
+.withdraw-button {
+    width: 100%;
+    height: 45px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.withdraw-button:hover {
+    background: #1d4ed8;
+}
+
+.withdraw-button:active {
+    transform: scale(0.99);
+}
+
+.withdraw-button:disabled {
+    background: #64748b;
+    cursor: not-allowed;
+}
+
+/* =========================
+   DETALLES DEL RETIRO
+   Espacio debajo del botón
+========================= */
+
+.withdraw-result-section {
+    margin-top: 24px;
+    padding: 20px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    color: #f8fafc;
+    animation: showDetails 0.3s ease;
+}
+
+.withdraw-result-section h3 {
+    color: #f8fafc;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.withdraw-result-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.withdraw-result-section th {
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 8px;
+    background: #1e293b;
+}
+
+.withdraw-result-section td {
+    color: #cbd5e1;
+    font-size: 13px;
+    padding: 12px 8px;
+    border-bottom: 1px solid #334155;
+}
+
+.withdraw-result-section tr:last-child td {
+    border-bottom: none;
+}
+
+.withdraw-result-section .total {
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #334155;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+/* Animación de los detalles */
+
+@keyframes showDetails {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   PANEL DE INVENTARIO
+========================= */
+
+.inventory-panel {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px;
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+}
+
+/* Encabezado */
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.panel-category {
+    display: block;
+    color: #2563eb;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.panel-heading h2 {
+    font-size: 21px;
+    color: #0f172a;
+    margin-bottom: 14px;
+}
+
+.panel-description {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Icono */
+
+.inventory-icon {
+    width: 44px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+/* =========================
+   TABLA DE INVENTARIO
+========================= */
+
+.inventory-table-container {
+    width: 100%;
+    overflow-x: auto;
+    flex: 1;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.inventory-table thead {
+    background: #f8fafc;
+}
+
+.inventory-table th {
+    color: #475569;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: left;
+    padding: 13px 8px;
+}
+
+.inventory-table td {
+    color: #0f172a;
+    font-size: 12px;
+    padding: 15px 8px;
+    border-bottom: 1px solid #dbe4ef;
+}
+
+.inventory-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.inventory-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* =========================
+   BOTÓN RESETEAR
+========================= */
+
+.reset-button {
+    width: 100%;
+    height: 42px;
+    margin-top: 24px;
+    background: #fff1f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.reset-button:hover {
+    background: #ffe4e6;
+}
+
+.reset-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .atm-panel,
+    .inventory-panel {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+
+    .atm-panel,
+    .inventory-panel {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .atm-screen {
+        padding: 16px;
+    }
+
+    .panel-heading h2 {
+        font-size: 19px;
+    }
+
+    .withdraw-result-section {
+        padding: 12px;
+    }
+
+    .withdraw-result-section th,
+    .withdraw-result-section td {
+        padding: 10px 5px;
+        font-size: 11px;
+    }
+}
