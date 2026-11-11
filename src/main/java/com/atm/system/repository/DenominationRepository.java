@@ -15,4 +15,5 @@ public interface DenominationRepository
     @Query("SELECT d FROM Denomination d ORDER BY d.value DESC")
     List<Denomination> findDenominationsForUpdate();
 
+    List<Denomination> findAllByOrderByValueDesc();
 }

@@ -1,6 +1,7 @@
 package com.atm.system.controller;
 
 import com.atm.system.dto.DenominationDetail;
+import com.atm.system.dto.DenominationStock;
 import com.atm.system.dto.WithdrawRequest;
 import com.atm.system.service.CashDispenserService;
 import com.atm.system.service.DenominationManagementService;
@@ -29,6 +30,10 @@ public class CashDispenserController {
         );
     }
 
+    @GetMapping
+    public ResponseEntity<List<DenominationStock>> getDenominations() {
+        return ResponseEntity.ok(managementService.getDenominations());
+    }
 
     @PostMapping("/reset")
     @ResponseStatus(HttpStatus.NO_CONTENT)

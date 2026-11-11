@@ -1,5 +1,6 @@
 package com.atm.system.service;
 
+import com.atm.system.dto.DenominationStock;
 import com.atm.system.model.Denomination;
 import com.atm.system.model.DenominationType;
 import com.atm.system.repository.DenominationRepository;
@@ -62,4 +63,14 @@ public class DenominationManagementService {
         );
     }
 
+    @Transactional(readOnly = true)
+    public List<DenominationStock> getDenominations() {
+        return denominationRepository.findAllByOrderByValueDesc().stream()
+                .map(d -> new DenominationStock(
+                        d.getDenominationType(),
+                        d.getValue(),
+                        d.getQuantity()
+                ))
+                .toList();
+    }
 }
